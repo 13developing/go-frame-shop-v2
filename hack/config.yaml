@@ -4,7 +4,7 @@
 gfcli:
   # 工具编译配置
   build:
-    name: "shop"
+    name: "shopv2"
     arch: "amd64"
     system: "linux,darwin,windows"
     mod: ""
@@ -13,7 +13,7 @@ gfcli:
   # dao生成
   gen:
     dao:  #todo 换成你自己的密码
-      - link: "mysql:root:2BaDgEMGQj@tcp(127.0.0.1:3306)/shop"
+      - link: "mysql:root:123456@tcp(127.0.0.1:3306)/shopv2"
         removePrefix: "gf_"
         descriptionTag: true
         noModelComment: true
