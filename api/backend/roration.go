@@ -12,7 +12,7 @@ type RotationReq struct {
 }
 
 type RotationRes struct {
-	RotationId int `json:"rotationId"`
+	RotationId int `json:"rotation_id"`
 }
 
 type RotationDeleteReq struct {
@@ -31,11 +31,14 @@ type RotationUpdateReq struct {
 type RotationUpdateRes struct {
 	Id uint `json:"id"`
 }
-type RotationGetListReq struct {
-	g.Meta `path:"/backend/rotation/list" method:"get" tags:"轮播图" summary:"轮播图列表"`
-	Sort   int `json:"sort"   in:"query" dc:"排序类型 默认倒序"`
+type RotationGetListCommonReq struct {
+	g.Meta `path:"/backend/rotation/list" method:"get" tags:"轮播图" summary:"轮播图列表接口"`
+	Sort   int `json:"sort"   in:"query" dc:"排序类型"`
 	CommonPaginationReq
 }
-type RotationGetListRes struct {
-	Data interface{}
+type RotationGetListCommonRes struct {
+	List  interface{} `json:"list" description:"列表"`
+	Page  int         `json:"page" description:"分页码"`
+	Size  int         `json:"size" description:"分页数量"`
+	Total int         `json:"total" description:"数据总数"`
 }
