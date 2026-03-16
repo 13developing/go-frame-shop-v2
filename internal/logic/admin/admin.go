@@ -101,10 +101,7 @@ func (s *sAdmin) GetList(ctx context.Context, in model.AdminGetListInput) (out *
 	if err != nil {
 		return out, err
 	}
-	// Admin
-	//指定item的键名用：ScanList
-	//if err := listModel.ScanList(&out.List, "Admin"); err != nil {
-	//不指定item的键名用：Scan
+
 	if err := listModel.Scan(&out.List); err != nil {
 		return out, err
 	}
