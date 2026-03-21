@@ -11,7 +11,6 @@ var Login = cLogin{}
 
 type cLogin struct{}
 
-//for session
 //func (a *cLogin) Login(ctx context.Context, req *backend.LoginDoReq) (res *backend.LoginDoRes, err error) {
 //	res = &backend.LoginDoRes{}
 //	err = service.Login().Login(ctx, model.UserLoginInput{
@@ -26,12 +25,11 @@ type cLogin struct{}
 //	return
 //}
 
-//for jwt
-//func (c *cLogin) Login(ctx context.Context, req *backend.LoginDoReq) (res *backend.LoginDoRes, err error) {
-//	res = &backend.LoginDoRes{}
-//	res.Token, res.Expire = service.Auth().LoginHandler(ctx)
-//	return
-//}
+func (c *cLogin) Login(ctx context.Context, req *backend.LoginDoReq) (res *backend.LoginDoRes, err error) {
+	res = &backend.LoginDoRes{}
+	res.Token, res.Expire = service.Auth().LoginHandler(ctx)
+	return
+}
 
 func (c *cLogin) RefreshToken(ctx context.Context, req *backend.RefreshTokenReq) (res *backend.RefreshTokenRes, err error) {
 	res = &backend.RefreshTokenRes{}

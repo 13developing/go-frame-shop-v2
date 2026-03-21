@@ -59,7 +59,7 @@ func (s *sAdmin) GetUserByUserNamePassword(ctx context.Context, in model.UserLog
 
 // Delete 删除
 func (s *sAdmin) Delete(ctx context.Context, id uint) error {
-	return dao.AdminInfo.Transaction(ctx, func(ctx context.Context, tx *gdb.TX) error {
+	return dao.AdminInfo.Transaction(ctx, func(ctx context.Context, tx gdb.TX) error {
 		// 删除内容
 		_, err := dao.AdminInfo.Ctx(ctx).Where(g.Map{
 			dao.AdminInfo.Columns().Id: id,
@@ -70,7 +70,7 @@ func (s *sAdmin) Delete(ctx context.Context, id uint) error {
 
 // Update 修改
 func (s *sAdmin) Update(ctx context.Context, in model.AdminUpdateInput) error {
-	return dao.AdminInfo.Transaction(ctx, func(ctx context.Context, tx *gdb.TX) error {
+	return dao.AdminInfo.Transaction(ctx, func(ctx context.Context, tx gdb.TX) error {
 		// 不允许HTML代码
 		if err := ghtml.SpecialCharsMapOrStruct(in); err != nil {
 			return err
